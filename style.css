@@ -118,4 +118,14 @@ form button:hover {
     .card img {
         width: 80px;
     }
+
+}
+footer a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: yellow;
 }
