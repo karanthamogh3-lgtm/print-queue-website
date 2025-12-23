@@ -1,0 +1,121 @@
+/* Body + Background */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    text-align: center;
+    padding-top: 40px;
+    transition: background 0.5s ease;
+}
+
+body:hover {
+    background: linear-gradient(to right, #fce4ec, #e1f5fe);
+}
+
+/* Header + Footer */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+/* Hero Section */
+.hero .shop-image {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Services */
+.services {
+    text-align: center;
+    margin: 20px;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100px;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Order Form */
+.order {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+form input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding-top: 20px;
+    }
+
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    .hero .shop-image {
+        width: 80%;
+    }
+
+    .card img {
+        width: 80px;
+    }
+}

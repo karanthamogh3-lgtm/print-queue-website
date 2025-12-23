@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Queue Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Basavanagudi Xerox</h1>
+    </header>
+
+    <section class="hero">
+        <img src="images/xerox.jpg" alt="Xerox Shop" class="shop-image">
+        <h2>Fast Printing & Xerox Services</h2>
+    </section>
+
+    <section class="services">
+        <h3>Our Services</h3>
+        <div class="service-cards">
+            <div class="card">
+                <img src="images/printer.jpg" alt="Printer">
+                <p>Printing</p>
+            </div>
+            <div class="card">
+                <img src="images/document.jpg" alt="Document">
+                <p>Document Scanning & Upload</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="order">
+        <h3>Place Your Order</h3>
+        <form id="orderForm">
+            <input type="text" placeholder="Your Name" required>
+
+            <!-- File selection -->
+            <input type="file" id="fileInput" required>
+
+            <input type="number" placeholder="Number of Copies" required>
+
+            <button type="submit">Submit Order</button>
+        </form>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Xerox Shop, Basavanagudi</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

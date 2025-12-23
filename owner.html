@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Owner Dashboard</h1>
+    </header>
+
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <th>Order No</th>
+            <th>Name</th>
+            <th>Document</th>
+            <th>Copies</th>
+        </tr>
+        <tbody id="orderTable"></tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2025 Xerox Shop, Basavanagudi</p>
+    </footer>
+
+    <script>
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        let table = document.getElementById('orderTable');
+
+        orders.forEach((o, i) => {
+            let row = `<tr>
+                <td>${i + 1}</td>
+                <td>${o.name}</td>
+                <td>${o.document}</td>
+                <td>${o.copies}</td>
+            </tr>`;
+            table.innerHTML += row;
+        });
+    </script>
+
+</body>
+
+</html>
