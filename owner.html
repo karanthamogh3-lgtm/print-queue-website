@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Owner Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Owner Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>Owner Dashboard</h1>
-    </header>
+<div class="container">
+  <div class="card">
+    <h2>🔐 Owner Login</h2>
 
-    <table border="1" align="center" cellpadding="10">
-        <tr>
-            <th>Order No</th>
-            <th>Name</th>
-            <th>Document</th>
-            <th>Copies</th>
-        </tr>
-        <tbody id="orderTable"></tbody>
-    </table>
+    <input type="password" id="ownerPass" placeholder="Enter Owner Password">
+    <button onclick="checkOwner()">Login</button>
 
-    <footer>
-        <p>&copy; 2025 Xerox Shop, Basavanagudi</p>
-    </footer>
+    <p id="loginMsg"></p>
+  </div>
+</div>
 
-    <script>
-        let orders = JSON.parse(localStorage.getItem('orders')) || [];
-        let table = document.getElementById('orderTable');
-
-        orders.forEach((o, i) => {
-            let row = `<tr>
-                <td>${i + 1}</td>
-                <td>${o.name}</td>
-                <td>${o.document}</td>
-                <td>${o.copies}</td>
-            </tr>`;
-            table.innerHTML += row;
-        });
-    </script>
+<script>
+  function checkOwner() {
+    const pass = document.getElementById("ownerPass").value;
+    if (pass === "owner123") {
+      window.location.href = "dashboard.html";
+    } else {
+      document.getElementById("loginMsg").innerText = "❌ Wrong password";
+    }
+  }
+</script>
 
 </body>
-
 </html>
