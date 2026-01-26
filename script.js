@@ -1,3 +1,4 @@
+const PRICE_PER_COPY = 2; // ₹2 per copy
 // Get existing queue or create new
 let queue = JSON.parse(localStorage.getItem("printQueue")) || [];
 
@@ -12,9 +13,11 @@ function addToQueue() {
   }
 
   const order = {
-    name: name,
-    copies: copies
-  };
+  name: name,
+  copies: copies,
+  price: copies * PRICE_PER_COPY
+};
+
 
   queue.push(order);
   localStorage.setItem("printQueue", JSON.stringify(queue));
@@ -22,10 +25,14 @@ function addToQueue() {
   const queueNo = queue.length;
   const totalTime = queue.reduce((sum, o) => sum + o.copies, 0);
 
-  document.getElementById("result").innerHTML = `
-    <p><b>Queue Number:</b> ${queueNo}</p>
-    <p><b>Estimated Time:</b> ${totalTime} minutes</p>
-  `;
+ const totalPrice = copies * PRICE_PER_COPY;
+
+document.getElementById("result").innerHTML = `
+  <p><b>Queue Number:</b> ${queueNo}</p>
+  <p><b>Estimated Time:</b> ${totalTime} minutes</p>
+  <p><b>Price:</b> ₹${totalPrice}</p>
+`;
+ 
 }
 
 // OWNER: Load dashboard data
@@ -55,6 +62,7 @@ function clearQueue() {
   document.getElementById("people").innerText = 0;
   document.getElementById("time").innerText = 0;
 }
+
 
 
 
