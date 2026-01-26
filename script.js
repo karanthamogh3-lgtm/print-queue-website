@@ -1,36 +1,23 @@
-let queue = JSON.parse(localStorage.getItem("queue")) || [];
+let queueCount = 0;
 
-function addToQueue() {
-  let copies = document.getElementById("copies").value;
-  if (copies === "" || copies <= 0) {
-    alert("Enter valid number of copies");
-    return;
-  }
+document.getElementById("printForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-  queue.push(Number(copies));
-  localStorage.setItem("queue", JSON.stringify(queue));
+  const name = document.getElementById("username").value;
+  const copies = parseInt(document.getElementById("copies").value);
 
-  let position = queue.length;
-  let time = queue.reduce((a, b) => a + b, 0);
+  queueCount++;
+  const timePerCopy = 1; // 1 minute per copy
+  const estimatedTime = copies * timePerCopy;
 
-  document.getElementById("output").innerText =
-    `Your Queue Number: ${position}, Estimated Time: ${time} minutes`;
-}
+  document.getElementById("result").innerHTML = `
+    <h3>✅ Order Placed!</h3>
+    <p><b>Name:</b> ${name}</p>
+    <p><b>Queue Number:</b> ${queueCount}</p>
+    <p><b>Estimated Time:</b> ${estimatedTime} minutes</p>
+  `;
+});
 
-function updateDashboard() {
-  let q = JSON.parse(localStorage.getItem("queue")) || [];
-  document.getElementById("people").innerText = q.length;
-  document.getElementById("time").innerText = q.reduce((a, b) => a + b, 0);
-}
-
-function clearQueue() {
-  localStorage.removeItem("queue");
-  updateDashboard();
-}
-
-if (window.location.pathname.includes("dashboard.html")) {
-  updateDashboard();
-}
 
 
 
