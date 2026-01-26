@@ -1,24 +1,37 @@
-const form = document.getElementById('orderForm');
+let queue = JSON.parse(localStorage.getItem("queue")) || [];
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+function addToQueue() {
+  let copies = document.getElementById("copies").value;
+  if (copies === "" || copies <= 0) {
+    alert("Enter valid number of copies");
+    return;
+  }
 
-    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+  queue.push(Number(copies));
+  localStorage.setItem("queue", JSON.stringify(queue));
 
-    const fileInput = document.getElementById('fileInput');
-    const fileName = fileInput.files[0].name;
+  let position = queue.length;
+  let time = queue.reduce((a, b) => a + b, 0);
 
-    const newOrder = {
-        name: form[0].value,
-        file: fileName,
-        copies: form[2].value
-    };
+  document.getElementById("output").innerText =
+    `Your Queue Number: ${position}, Estimated Time: ${time} minutes`;
+}
 
-    orders.push(newOrder);
-    localStorage.setItem('orders', JSON.stringify(orders));
+function updateDashboard() {
+  let q = JSON.parse(localStorage.getItem("queue")) || [];
+  document.getElementById("people").innerText = q.length;
+  document.getElementById("time").innerText = q.reduce((a, b) => a + b, 0);
+}
 
-    alert("Document Selected & Order Placed!");
-    form.reset();
-});
+function clearQueue() {
+  localStorage.removeItem("queue");
+  updateDashboard();
+}
+
+if (window.location.pathname.includes("dashboard.html")) {
+  updateDashboard();
+}
+
+
 
 
