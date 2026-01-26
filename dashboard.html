@@ -1,58 +1,47 @@
-<script>
-  const pass = prompt("Enter owner password:");
-  if (pass !== "owner123") {
-    alert("Access denied");
-    window.location.href = "index.html";
-  }
-</script>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Owner Dashboard</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Owner password protection -->
+  <script>
+    const pass = prompt("Enter owner password:");
+    if (pass !== "owner123") {
+      alert("Access denied");
+      window.location.href = "index.html";
+    }
+  </script>
 </head>
+
 <body>
-  <!-- dashboard content -->
+
+  <header class="navbar">
+    <h1>🖨 Owner Dashboard</h1>
+  </header>
+
+  <main class="container">
+
+    <div class="card">
+      <h2>📄 Print Orders</h2>
+      <ul id="orderList"></ul>
+    </div>
+
+    <div class="card">
+      <h2>Queue Status</h2>
+      <p>Total People in Queue: <span id="people">0</span></p>
+      <p>Estimated Waiting Time: <span id="time">0</span> minutes</p>
+      <button onclick="clearQueue()">Clear Queue</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    loadDashboard();
+  </script>
+
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Owner Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<header class="navbar">
-  <h1>🖨️ Owner Dashboard</h1>
-</header>
-
-<main class="container">
-
-  <div class="card">
-    <h2>🖨️ Print Orders</h2>
-    <ul id="orderList">
-      <!-- User orders will appear here -->
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Queue Status</h2>
-
-    <p>Total People in Queue: <span id="people">0</span></p>
-    <p>Estimated Waiting Time: <span id="time">0</span> minutes</p>
-
-    <button onclick="clearQueue()">Clear Queue</button>
-  </div>
-
-</main>
-
-<script src="script.js"></script>
-<script>
-  loadDashboard();
-</script>
-</body>
-</html>
