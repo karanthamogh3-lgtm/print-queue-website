@@ -4,44 +4,50 @@
   <meta charset="UTF-8">
   <title>Owner Dashboard</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Owner password protection -->
-  <script>
-    const pass = prompt("Enter owner password:");
-    if (pass !== "owner123") {
-      alert("Access denied");
-      window.location.href = "index.html";
-    }
-  </script>
 </head>
 
 <body>
 
-  <header class="navbar">
-    <h1>🖨 Owner Dashboard</h1>
-  </header>
+<script>
+  const pass = prompt("Enter owner password:");
+  if (pass !== "owner123") {
+    alert("Access denied");
+    window.location.href = "index.html";
+  }
+</script>
 
-  <main class="container">
+<header class="navbar">
+  <h1>
+    <img src="images/printer.jpg" class="icon-lg">
+    Owner Dashboard
+  </h1>
+</header>
 
-    <div class="card">
-      <h2>📄 Print Orders</h2>
-      <ul id="orderList"></ul>
-    </div>
+<main class="container">
 
-    <div class="card">
-      <h2>Queue Status</h2>
-      <p>Total People in Queue: <span id="people">0</span></p>
-      <p>Estimated Waiting Time: <span id="time">0</span> minutes</p>
-      <button onclick="clearQueue()">Clear Queue</button>
-    </div>
+  <div class="card">
+    <h2>
+      <img src="images/xerox.jpg" class="icon">
+      Print Orders
+    </h2>
 
-  </main>
+    <ul id="orderList"></ul>
+  </div>
 
-  <script src="script.js"></script>
-  <script>
-    loadDashboard();
-  </script>
+  <div class="card">
+    <h2>Queue Status</h2>
+    <p>Total People in Queue: <span id="people">0</span></p>
+    <p>Estimated Waiting Time: <span id="time">0</span> minutes</p>
+
+    <button onclick="clearQueue()">Clear Queue</button>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+  loadDashboard();
+</script>
 
 </body>
 </html>
-
