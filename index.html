@@ -2,31 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Print Queue System</title>
+  <title>Print Queue Management</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>📄 Print Queue Management</h1>
-    <p>Upload your document and join the queue</p>
+  <main class="container">
+    <div class="card">
 
-    <form id="printForm">
-      <label>👤 Your Name</label>
-      <input type="text" id="username" placeholder="Enter your name" required>
+      <!-- TITLE WITH IMAGE -->
+      <h1 class="title">
+        <img src="images/printer.jpg" class="icon-lg" alt="Printer">
+        Print Queue Management
+      </h1>
 
-      <label>📂 Select Document</label>
-      <input type="file" id="file" required>
+      <p class="subtitle">Upload your document and join the queue</p>
 
-      <label>🖨️ Number of Copies</label>
-      <input type="number" id="copies" min="1" required>
+      <!-- NAME -->
+      <label>
+        <img src="images/document.jpg" class="icon">
+        Your Name
+      </label>
+      <input type="text" id="username" placeholder="Enter your name">
 
-     <button type="button" onclick="addToQueue()">Join Queue</button>
+      <!-- FILE -->
+      <label>
+        <img src="images/document.jpg" class="icon">
+        Select Document
+      </label>
+      <input type="file" id="file">
 
-    </form>
+      <!-- COPIES -->
+      <label>
+        <img src="images/xerox.jpg" class="icon">
+        Number of Copies
+      </label>
+      <input type="number" id="copies" min="1">
 
-    <div id="result"></div>
-  </div>
+      <!-- BUTTON -->
+      <button onclick="addToQueue()">
+        <img src="images/xerox.jpg" class="icon-btn">
+        Join Queue
+      </button>
+
+      <!-- RESULT -->
+      <div id="result" class="result"></div>
+
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
