@@ -49,22 +49,23 @@ button:hover {
   text-align: center;
 }
 .icon {
-  width: 22px;
-  vertical-align: middle;
-  margin-right: 6px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .icon-lg {
-  width: 40px;
-  vertical-align: middle;
-  margin-right: 10px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 .icon-btn {
   width: 18px;
-  vertical-align: middle;
-  margin-right: 6px;
+  height: 18px;
+  object-fit: contain;
 }
+
 
 button {
   display: flex;
@@ -72,6 +73,13 @@ button {
   justify-content: center;
   gap: 6px;
 }
+/* SAFETY RULE FOR ALL IMAGES */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 
 
 
