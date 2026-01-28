@@ -7,59 +7,61 @@
 </head>
 <body>
 
-  <main class="container">
-    <div class="card">
+<main class="container">
+  <div class="card">
 
-      <!-- TITLE WITH IMAGE -->
-      <h1 class="title">
-        <img src="images/printer.jpg" class="icon-lg" alt="Printer">
-        Basavanagudi Xerox
-      </h1>
+    <!-- TITLE -->
+    <h1 class="title">
+      <img src="images/printer.jpg" class="icon-lg" alt="Printer">
+      Basavanagudi Xerox
+    </h1>
 
-      <p class="subtitle">Upload your document and join the queue</p>
-<p class="phone">📞 Phone: <a href="tel:9886301923">9886301923</a></p>
-<p class="address">📍 7th Main, Raghavendra Block,<br>
-Basavanagudi, Bangalore - 50</p>
-<div id="userInfo" style="margin-top:10px;"></div>
+    <p class="subtitle">Upload your document and join the queue</p>
 
-<p class="timing">🕘 Open: 8:00 AM – 9:00 PM</p>
+    <!-- SHOP INFO -->
+    <p class="phone">📞 Phone: <a href="tel:9886301923">9886301923</a></p>
+    <p class="address">
+      📍 7th Main, Raghavendra Block,<br>
+      Basavanagudi, Bangalore – 50
+    </p>
+    <p class="timing">🕒 Open: 8:00 AM – 9:00 PM</p>
 
-      <!-- NAME -->
-      <label>
-        <img src="images/document.jpg" class="icon">
-        Your Name
-      </label>
-      <input type="text" id="username" placeholder="Enter your name">
+    <!-- USER INFO RESULT -->
+    <div id="userInfo" style="margin-top:12px;"></div>
 
-      <!-- FILE -->
-      <label>
-        <img src="images/document.jpg" class="icon">
-        Select Document
-      </label>
-      <input type="file" id="file">
+    <!-- NAME -->
+    <label>
+      <img src="images/document.jpg" class="icon">
+      Your Name
+    </label>
+    <input type="text" id="username" placeholder="Enter your name">
 
-      <!-- COPIES -->
-      <label>
-        <img src="images/xerox.jpg" class="icon">
-        Number of Copies
-      </label>
-      <input type="number" id="copies" min="1">
+    <!-- FILE -->
+    <label>
+      <img src="images/document.jpg" class="icon">
+      Select Document
+    </label>
+    <input type="file" id="file">
 
-      <!-- BUTTON -->
-      <button onclick="addToQueue()">
-        <img src="images/xerox.jpg" class="icon-btn">
-        Join Queue
-      </button>
+    <!-- COPIES -->
+    <label>
+      <img src="images/xerox.jpg" class="icon">
+      Number of Copies
+    </label>
+    <input type="number" id="copies" min="1" placeholder="Enter copies">
 
-      <!-- RESULT -->
-      <div id="result" class="result"></div>
+    <!-- BUTTON -->
+    <button onclick="joinQueue()">
+      <img src="images/xerox.jpg" class="icon-btn">
+      Join Queue
+    </button>
 
-    </div>
-  </main>
+  </div>
+</main>
 
-  <script>
+<script>
 function joinQueue() {
-  const name = document.getElementById("username").value;
+  const name = document.getElementById("username").value.trim();
   const copies = document.getElementById("copies").value;
 
   if (name === "" || copies === "") {
@@ -79,17 +81,19 @@ function joinQueue() {
     time: time
   };
 
+  // Get existing queue
   let queue = JSON.parse(localStorage.getItem("printQueue")) || [];
   queue.push(order);
   localStorage.setItem("printQueue", JSON.stringify(queue));
 
-  // Show user confirmation
+  // Show confirmation to user
   document.getElementById("userInfo").innerHTML = `
-    <p>✅ Joined Queue</p>
+    <p>✅ <strong>Joined Queue Successfully</strong></p>
     <p><strong>Date:</strong> ${date}</p>
     <p><strong>Time:</strong> ${time}</p>
   `;
 
+  // Clear inputs
   document.getElementById("username").value = "";
   document.getElementById("copies").value = "";
 }
@@ -97,6 +101,7 @@ function joinQueue() {
 
 </body>
 </html>
+
 
 
 
