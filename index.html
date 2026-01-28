@@ -20,6 +20,7 @@
 <p class="phone">📞 Phone: <a href="tel:9886301923">9886301923</a></p>
 <p class="address">📍 7th Main, Raghavendra Block,<br>
 Basavanagudi, Bangalore - 50</p>
+<div id="userInfo" style="margin-top:10px;"></div>
 
 <p class="timing">🕘 Open: 8:00 AM – 9:00 PM</p>
 
@@ -56,9 +57,47 @@ Basavanagudi, Bangalore - 50</p>
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+function joinQueue() {
+  const name = document.getElementById("username").value;
+  const copies = document.getElementById("copies").value;
+
+  if (name === "" || copies === "") {
+    alert("Please fill all details");
+    return;
+  }
+
+  // Get current date & time
+  const now = new Date();
+  const date = now.toLocaleDateString();
+  const time = now.toLocaleTimeString();
+
+  const order = {
+    name: name,
+    copies: copies,
+    date: date,
+    time: time
+  };
+
+  let queue = JSON.parse(localStorage.getItem("printQueue")) || [];
+  queue.push(order);
+  localStorage.setItem("printQueue", JSON.stringify(queue));
+
+  // Show user confirmation
+  document.getElementById("userInfo").innerHTML = `
+    <p>✅ Joined Queue</p>
+    <p><strong>Date:</strong> ${date}</p>
+    <p><strong>Time:</strong> ${time}</p>
+  `;
+
+  document.getElementById("username").value = "";
+  document.getElementById("copies").value = "";
+}
+</script>
+
 </body>
 </html>
+
 
 
 
